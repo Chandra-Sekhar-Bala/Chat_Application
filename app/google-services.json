@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "405747431499",
+    "project_id": "chatapp-a184d",
+    "storage_bucket": "chatapp-a184d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405747431499:android:177abee4ae8cb34bb6f5ce",
+        "android_client_info": {
+          "package_name": "com.chandra.chatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "405747431499-t38kar7pk3232ss260ltt258jgg276ii.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCX-WwNkqNbEJNX1XlFk8GpuIifZNW9oAU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "405747431499-t38kar7pk3232ss260ltt258jgg276ii.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
