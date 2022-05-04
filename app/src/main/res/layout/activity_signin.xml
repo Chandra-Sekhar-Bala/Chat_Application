@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".signin.SignIn"
     android:background="@drawable/apk_background"
-    >
+    tools:context=".signin.SignIn">
 
     <ImageView
         android:id="@+id/img"
         android:layout_width="109dp"
         android:layout_height="109dp"
-        android:layout_marginTop="124dp"
+        android:layout_marginTop="80dp"
         android:src="@drawable/chat_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,49 +67,93 @@
         app:layout_constraintStart_toStartOf="@+id/password"
         app:layout_constraintTop_toBottomOf="@+id/password" />
 
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/signInButton"
-        android:layout_width="288dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="52dp"
+
+    <Button
+        android:id="@+id/btn_google"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="116dp"
+        android:text="Sign in with Google"
+        android:drawableStart="@drawable/icon_email"
+        android:textAllCaps="false"
+        android:backgroundTint="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:typeface="sans"
+        android:paddingHorizontal="20dp"
+        android:textColor="@color/grey"
+        android:background="@drawable/signup_button_background"
         app:layout_constraintEnd_toEndOf="@+id/img"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="@+id/img"
-        app:layout_constraintTop_toBottomOf="@+id/img"
-        tools:ignore="MissingConstraints" />
-
+        app:layout_constraintTop_toBottomOf="@+id/img" />
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="288dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="12dp"
-        android:backgroundTint="#FFFFFF"
+        android:id="@+id/btn_email"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
         android:text="Sign in with Email"
+        android:drawableStart="@drawable/icon_email"
         android:textAllCaps="false"
-        android:textColor="#686262"
-        android:textSize="16sp"
+        android:backgroundTint="@color/white"
+        android:textSize="18sp"
         android:textStyle="bold"
         android:typeface="sans"
-        app:layout_constraintEnd_toEndOf="@+id/signInButton"
+        android:paddingHorizontal="20dp"
+        android:textColor="@color/grey"
+        android:background="@drawable/signup_button_background"
+        app:layout_constraintEnd_toEndOf="@+id/btn_google"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/signInButton"
-        app:layout_constraintTop_toBottomOf="@+id/signInButton" />
+        app:layout_constraintStart_toStartOf="@+id/btn_google"
+        app:layout_constraintTop_toBottomOf="@+id/btn_google" />
 
     <Button
-        android:layout_width="288dp"
-        android:layout_height="66dp"
-        android:backgroundTint="#FFFFFF"
+        android:id="@+id/btn_phone"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
         android:text="Sign in with Phone"
+        android:layout_marginTop="10dp"
+        android:drawableStart="@drawable/icon_phone"
         android:textAllCaps="false"
-        android:textColor="#686262"
-        android:layout_marginTop="12dp"
-        android:textSize="16sp"
+        android:backgroundTint="@color/white"
+        android:textSize="18sp"
         android:textStyle="bold"
         android:typeface="sans"
-        app:layout_constraintEnd_toEndOf="@+id/button3"
+        android:paddingHorizontal="20dp"
+        android:textColor="@color/grey"
+        android:background="@drawable/signup_button_background"
+        app:layout_constraintEnd_toEndOf="@+id/btn_email"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintStart_toStartOf="@+id/btn_email"
+        app:layout_constraintTop_toBottomOf="@+id/btn_email" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Don't have a account? "
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_signUp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_signUp"
+        app:layout_constraintHorizontal_bias="0.607"
+        app:layout_constraintStart_toStartOf="@+id/btn_phone"
+        app:layout_constraintTop_toBottomOf="@+id/btn_phone"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/btn_signUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="25dp"
+        android:text="Sign up"
+        android:textColor="#1B0CEC"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/btn_phone"
+        app:layout_constraintTop_toBottomOf="@+id/btn_phone" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
