@@ -17,6 +17,49 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <com.hbb20.CountryCodePicker
+        android:id="@+id/ccp"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        app:ccp_autoDetectCountry="true"
+        app:ccp_showNameCode="false"
+        app:ccp_contentColor="#595656"
+        android:layout_marginStart="15dp"
+        app:ccp_defaultNameCode="IN"
+        android:visibility="gone"
+        app:ccp_defaultPhoneCode="91"
+        app:ccp_countryPreference="IN,US,NZ"
+        app:ccpDialog_backgroundColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/edt_phone_number"
+        app:layout_constraintEnd_toStartOf="@+id/edt_phone_number"
+        app:layout_constraintTop_toTopOf="@+id/edt_phone_number"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ccp_textSize="20dp" />
+
+
+    <EditText
+        android:id="@+id/edt_phone_number"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="92dp"
+        android:background="@drawable/edt_background"
+        android:drawableStart="@drawable/icon_phone"
+        android:drawablePadding="12dp"
+        android:hint="Phone"
+        android:inputType="phone"
+        android:visibility="gone"
+        android:paddingStart="17dp"
+        android:typeface="monospace"
+        app:ccp_autoFormatNumber="true"
+        app:layout_constraintEnd_toEndOf="@+id/img"
+        app:layout_constraintHorizontal_bias="0.205"
+        app:layout_constraintStart_toStartOf="@+id/img"
+        app:layout_constraintTop_toTopOf="@+id/edt_username"
+        tools:ignore="RtlSymmetry" />
+
     <EditText
         android:id="@+id/edt_username"
         android:layout_width="300dp"
@@ -50,39 +93,41 @@
         app:layout_constraintTop_toBottomOf="@+id/edt_username"
         tools:ignore="RtlSymmetry" />
 
+
     <Button
         android:id="@+id/submitBtn"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="76dp"
-        android:backgroundTint="#164ACA"
-        android:elevation="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="72dp"
+        android:background="@drawable/submit_btn_disabled"
+        android:enabled="false"
         android:text="Submit"
         android:textAllCaps="false"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="22sp"
         android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="@+id/password"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="@+id/password"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.46"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_google"
         android:layout_width="260dp"
         android:layout_height="50dp"
         android:layout_marginTop="116dp"
-        android:text="Sign in with Google"
-        android:drawableStart="@drawable/icon_email"
-        android:textAllCaps="false"
+        android:background="@drawable/signup_button_background"
         android:backgroundTint="#FFFFFF"
+        android:drawableStart="@drawable/icon_email"
+        android:paddingHorizontal="20dp"
+        android:text="Sign in with Google"
+        android:textAllCaps="false"
+        android:textColor="@color/grey"
         android:textSize="18sp"
         android:textStyle="bold"
         android:typeface="sans"
-        android:paddingHorizontal="20dp"
-        android:textColor="@color/grey"
-        android:background="@drawable/signup_button_background"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="@+id/img"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="@+id/img"
@@ -93,16 +138,17 @@
         android:layout_width="260dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
-        android:text="Sign in with Email"
-        android:drawableStart="@drawable/icon_email"
-        android:textAllCaps="false"
+        android:background="@drawable/signup_button_background"
         android:backgroundTint="@color/white"
+        android:drawableStart="@drawable/icon_email"
+        android:paddingHorizontal="20dp"
+        android:text="Sign in with Email"
+        android:textAllCaps="false"
+        android:textColor="@color/grey"
         android:textSize="18sp"
         android:textStyle="bold"
         android:typeface="sans"
-        android:paddingHorizontal="20dp"
-        android:textColor="@color/grey"
-        android:background="@drawable/signup_button_background"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@+id/btn_google"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/btn_google"
@@ -112,48 +158,54 @@
         android:id="@+id/btn_phone"
         android:layout_width="260dp"
         android:layout_height="50dp"
-        android:text="Sign in with Phone"
         android:layout_marginTop="10dp"
-        android:drawableStart="@drawable/icon_phone"
-        android:textAllCaps="false"
+        android:background="@drawable/signup_button_background"
         android:backgroundTint="@color/white"
+        android:drawableStart="@drawable/icon_phone"
+        android:paddingHorizontal="20dp"
+        android:text="Sign in with Phone"
+        android:textAllCaps="false"
+        android:textColor="@color/grey"
         android:textSize="18sp"
         android:textStyle="bold"
         android:typeface="sans"
-        android:paddingHorizontal="20dp"
-        android:textColor="@color/grey"
-        android:background="@drawable/signup_button_background"
-        app:layout_constraintEnd_toEndOf="@+id/btn_email"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="@+id/btn_google"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btn_email"
+        app:layout_constraintStart_toStartOf="@+id/btn_google"
         app:layout_constraintTop_toBottomOf="@+id/btn_email" />
 
-    <TextView
-        android:id="@+id/textView"
+    <LinearLayout
+        android:id="@+id/bottom_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Don't have a account? "
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_signUp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_signUp"
-        app:layout_constraintHorizontal_bias="0.607"
-        app:layout_constraintStart_toStartOf="@+id/btn_phone"
-        app:layout_constraintTop_toBottomOf="@+id/btn_phone"
-        app:layout_constraintVertical_bias="1.0" />
+        android:orientation="horizontal"
+        android:layout_marginTop="500dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
-    <TextView
-        android:id="@+id/btn_signUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="25dp"
-        android:text="Sign up"
-        android:textColor="#1B0CEC"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/btn_phone"
-        app:layout_constraintTop_toBottomOf="@+id/btn_phone" />
+
+        <TextView
+            android:id="@+id/have_acc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Don't have a account? "
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/btn_signUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign up"
+            android:padding="8dp"
+            android:textColor="#1B0CEC"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
