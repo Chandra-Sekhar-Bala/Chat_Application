@@ -179,7 +179,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginBottom="72dp"
         android:background="@drawable/submit_btn_disabled"
-        android:enabled="false"
+        android:enabled="true"
         android:text="Submit"
         android:textAllCaps="false"
         android:textColor="@color/white"

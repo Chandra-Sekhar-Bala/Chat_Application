@@ -112,6 +112,20 @@
         app:layout_constraintHorizontal_bias="0.46"
         app:layout_constraintStart_toStartOf="parent" />
 
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="72dp"
+
+        />
+
     <Button
         android:id="@+id/btn_google"
         android:layout_width="260dp"
@@ -158,7 +172,7 @@
         android:id="@+id/btn_phone"
         android:layout_width="260dp"
         android:layout_height="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/signup_button_background"
         android:backgroundTint="@color/white"
         android:drawableStart="@drawable/icon_phone"

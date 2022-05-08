@@ -54,9 +54,10 @@ dependencies {
     // Signup UI
     implementation 'com.firebaseui:firebase-ui-auth:7.2.0'
 
-    // Email authentication
+    //  authentication
     implementation 'com.google.firebase:firebase-auth-ktx'
-    implementation 'com.google.android.gms:play-services-auth:20.2.0'
+    implementation 'com.google.android.gms:play-services-auth:implementation'
+    implementation 'androidx.browser:browser:1.4.0'
 
     // ccp
     implementation 'com.hbb20:ccp:2.5.0'

@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "405747431499-luhamb33jj1qv5kgajjjthj0bde5b7n6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chandra.chatapp",
+            "certificate_hash": "310c6255f05496386324f393a1796120e0f13707"
+          }
+        },
+        {
           "client_id": "405747431499-t38kar7pk3232ss260ltt258jgg276ii.apps.googleusercontent.com",
           "client_type": 3
         }

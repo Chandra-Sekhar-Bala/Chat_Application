@@ -1,6 +1,8 @@
 package com.chandra.chatapp.signin
 
+import android.content.ContentValues.TAG
 import android.content.Intent
+import android.icu.util.TimeUnit
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -13,7 +15,11 @@ import android.widget.Toast
 import com.chandra.chatapp.R
 import com.chandra.chatapp.databinding.ActivitySigninBinding
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException
+import com.google.firebase.FirebaseException
+import com.google.firebase.FirebaseTooManyRequestsException
+import com.google.firebase.auth.*
 import org.w3c.dom.Text
+import javax.xml.datatype.DatatypeConstants.SECONDS
 
 class SignIn : AppCompatActivity() {
 
@@ -21,6 +27,9 @@ class SignIn : AppCompatActivity() {
     private lateinit var ttb : Animation
     private lateinit var ltr : Animation
     private lateinit var rtl : Animation
+
+    private lateinit var auth : FirebaseAuth
+    private lateinit var callbacks : PhoneAuthProvider.OnVerificationStateChangedCallbacks
 
 
     lateinit var binding : ActivitySigninBinding
@@ -36,6 +45,8 @@ class SignIn : AppCompatActivity() {
 
         binding.submitBtn.isEnabled = false
         playAnimation()
+
+        auth = FirebaseAuth.getInstance()
 
 
         binding.ccp.registerCarrierNumberEditText(binding.edtPhoneNumber)
@@ -97,11 +108,14 @@ class SignIn : AppCompatActivity() {
             binding.ccp.visibility = View.VISIBLE
         }
 
-        binding.submitBtn.setOnClickListener{
-//            if(binding.submitBtn.isEnabled) {
-                startActivity(Intent(this, OTPVerification::class.java))
-//            }
+        binding.submitBtn.setOnClickListener {
+//            startActivity(Intent(this, OTPVerification::class.java))
+            binding.submitBtn.visibility = View.GONE
+            binding.progressBar.visibility = View.VISIBLE
+            sendOTP(binding.edtPhoneNumber.text.toString().trim())
+
         }
+
 
 
         binding.btnGoogle.setOnClickListener{
@@ -111,6 +125,73 @@ class SignIn : AppCompatActivity() {
 
 
 
+
+
+
+    }
+
+    private fun sendOTP(ph: String) {
+
+        val phoneNumber = "+" + binding.ccp.selectedCountryCode + ph
+        Log.e("PHONE",phoneNumber)
+
+
+        callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+
+            override fun onVerificationCompleted(credential: PhoneAuthCredential) {
+                binding.submitBtn.visibility = View.VISIBLE
+                binding.progressBar.visibility = View.GONE
+                Log.d(TAG, "onVerificationCompleted:$credential")
+                signInWithPhoneAuthCredential(credential)
+            Toast.makeText(this@SignIn,"onVerificationCompleted", Toast.LENGTH_SHORT).show()
+
+            }
+
+            private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
+
+
+            }
+
+            override fun onVerificationFailed(e: FirebaseException) {
+
+                binding.submitBtn.visibility = View.VISIBLE
+                binding.progressBar.visibility = View.GONE
+                Toast.makeText(this@SignIn,e.message, Toast.LENGTH_SHORT).show()
+
+                if (e is FirebaseAuthInvalidCredentialsException) {
+                    // Invalid request
+                } else if (e is FirebaseTooManyRequestsException) {
+                    // The SMS quota for the project has been exceeded
+                }
+
+            }
+
+            override fun onCodeSent(
+                verificationId: String,
+                token: PhoneAuthProvider.ForceResendingToken
+            ) {
+                binding.submitBtn.visibility = View.VISIBLE
+                binding.progressBar.visibility = View.GONE
+
+                val intent = Intent(this@SignIn,OTPVerification::class.java)
+                intent.putExtra("phone",phoneNumber)
+                intent.putExtra("id",verificationId)
+                startActivity(intent)
+
+                Toast.makeText(this@SignIn,"Code Sent", Toast.LENGTH_SHORT).show()
+
+            }
+        }
+
+
+        val options = PhoneAuthOptions.newBuilder(auth)
+            .setPhoneNumber(phoneNumber)       // Phone number to verify
+            .setTimeout(60L, java.util.concurrent.TimeUnit.SECONDS) // Timeout and unit
+            .setActivity(this)                 // Activity (for callback binding)
+            .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
+            .build()
+        PhoneAuthProvider.verifyPhoneNumber(options)
+
     }
 
     private fun playAnimation() {
@@ -118,7 +199,6 @@ class SignIn : AppCompatActivity() {
         binding.btnGoogle.startAnimation(rtl)
         binding.btnEmail.startAnimation(ltr)
         binding.btnPhone.startAnimation(ltr)
-
 
     }
 
